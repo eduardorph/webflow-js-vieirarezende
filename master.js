@@ -10,3 +10,10 @@ function remove_slide(Webflow){
 	// Recarrega o slide com a nova configuração
 	Webflow.require('slider').redraw();
 }
+
+function esconder_vazio(el){
+	var el = $(el);
+	if ( el.find(".w-dyn-empty").length ) {
+		el.parent().css('display', 'none');
+	}
+}
