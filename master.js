@@ -11,9 +11,27 @@ function remove_slide(Webflow){
 	Webflow.require('slider').redraw();
 }
 
-function esconder_vazio(el){
+function esconder_vazio_cms(el){
 	var el = $(el);
 	if ( el.find(".w-dyn-empty").length ) {
+		el.parent().css('display', 'none');
+	}
+}
+
+function esconder_vazio(el){
+	var el = $(el);
+	var p = 0;
+
+	el.each(function(index, elemento) {
+		var elem = $(this);
+		if(elem.hasClass('w-condition-invisible')){
+			p++;
+		}
+	});
+
+	console.log(p);
+
+	if (p !== 0) {
 		el.parent().css('display', 'none');
 	}
 }
