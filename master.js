@@ -11,15 +11,16 @@ function remove_slide(Webflow){
 	Webflow.require('slider').redraw();
 }
 
-function esconder_vazio_cms(el_parent){
-	var el = $(el_parent);
+function esconder_vazio_cms(parent_el){
+	var el = $(parent_el);
 	if ( el.find(".w-dyn-empty").length ) {
-		el.css('display', 'none');
+		el.find(".w-dyn-empty").closest(parent_el).css('display', 'none');
 	}
 }
 
-function esconder_vazio(el){
-	var el = $(el);
+function esconder_vazio(parent_el){
+	var par_el = $(parent_el);
+	var el = par_el.children().not(':eq(0)');
 	var p = 0;
 
 	el.each(function(index, elemento) {
@@ -32,6 +33,6 @@ function esconder_vazio(el){
 	console.log(p);
 
 	if (p !== 0) {
-		el.closest().css('display', 'none');
+		el.closest(parent_el).css('display', 'none');
 	}
 }
