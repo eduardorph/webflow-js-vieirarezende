@@ -13,8 +13,9 @@ function remove_slide(Webflow){
 
 function esconder_vazio_cms(parent_el){
 	var el = $(parent_el);
+
 	if ( el.find(".w-dyn-empty").length ) {
-		el.find(".w-dyn-empty").closest(parent_el).css('display', 'none');
+		el.find(".w-dyn-empty").closest(parent_el).hide();
 	}
 }
 
@@ -29,8 +30,6 @@ function esconder_vazio(parent_el){
 			p++;
 		}
 	});
-
-	console.log(p);
 
 	if (p !== 0) {
 		el.closest(parent_el).css('display', 'none');
