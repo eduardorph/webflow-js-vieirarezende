@@ -11,10 +11,10 @@ function remove_slide(Webflow){
 	Webflow.require('slider').redraw();
 }
 
-function esconder_vazio_cms(el){
-	var el = $(el);
+function esconder_vazio_cms(el_parent){
+	var el = $(el_parent);
 	if ( el.find(".w-dyn-empty").length ) {
-		el.parent().css('display', 'none');
+		el.css('display', 'none');
 	}
 }
 
@@ -32,6 +32,6 @@ function esconder_vazio(el){
 	console.log(p);
 
 	if (p !== 0) {
-		el.parent().css('display', 'none');
+		el.closest().css('display', 'none');
 	}
 }
