@@ -23,6 +23,7 @@ function esconder_vazio(parent_el){
 	var par_el = $(parent_el);
 	var el = par_el.children().not(':eq(0)');
 	var p = 0;
+	var el_count = el.length;
 
 	el.each(function(index, elemento) {
 		var elem = $(this);
@@ -31,7 +32,10 @@ function esconder_vazio(parent_el){
 		}
 	});
 
-	if (p !== 0) {
+	if (p == el_count) {
 		el.closest(parent_el).css('display', 'none');
 	}
+
+	console.log(p);
+	console.log(el_count);
 }
