@@ -44,7 +44,7 @@ function pega_campos_select(id_select, url){
     });
 }
 
-function cria_classes(url){
+function cria_classes(url, tipo){
     console.log("ajax 2");
     $.ajax({
         url: url,
@@ -62,7 +62,7 @@ function cria_classes(url){
             console.log('Error ' + xhr.status + ' - ' + xhr.statusText + ' - Tipo de erro: ' + er);
         },
         complete: function() {
-            add_classe_bios();
+            add_classe_bios(tipo);
         }
     });
 }
@@ -98,6 +98,37 @@ function trata_json(el, slug){
     }
 }
 
+function trata_json_en(el, slug){
+    var data_equipe = JSON.parse(window.sessionStorage.getItem('data_equipe'));
+
+    var atuacoes = [];
+    var escritorios = [];
+    var cargo = [];
+
+    for (var i = 0; i < data_equipe.length; i++) {
+        if(data_equipe[i].slug == slug){
+
+            if (data_equipe[i]["practice-areas"]) {
+                atuacoes = data_equipe[i]["practice-areas"];
+            }
+
+            if (data_equipe[i].escritorios) {
+                escritorios = data_equipe[i].escritorios;
+            }
+
+            if (data_equipe[i].position) {
+                cargo = data_equipe[i].position;
+            }
+
+            el.addClass(data_equipe[i].slug);
+            el.addClass(atuacoes.join(" "));
+            el.addClass(escritorios.join(" "));
+            el.addClass(cargo);
+            break;
+        }
+    }
+}
+
 function popula_options(id_select){
     var id = id_select.attr('id');
 
@@ -112,10 +143,17 @@ function popula_options(id_select){
 }
 
 
-function add_classe_bios(){
+function add_classe_bios(tipo){
     $(".slug-bio").closest('.bios-in-practice').each(function(index, el) {
         var elemento_posicao = $(this).find('.posicao-single');
-        trata_json($(this), $(this).find(".slug-bio").text());
+        
+        switch (tipo) {
+          case 'pt':
+            trata_json($(this), $(this).find(".slug-bio").text());
+            break;
+          default:
+            trata_json_en($(this), $(this).find(".slug-bio").text());
+        }
     });
 }
 
