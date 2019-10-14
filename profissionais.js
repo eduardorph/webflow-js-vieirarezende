@@ -20,7 +20,7 @@ function orderSelect($element) {
 }
 
 function pega_campos_select(id_select, url){
-    console.log("ajax 1");
+    // console.log("ajax 1");
     var id = id_select.attr('id');
 
     $.ajax({
@@ -45,7 +45,7 @@ function pega_campos_select(id_select, url){
 }
 
 function cria_classes(url, tipo){
-    console.log("ajax 2");
+    // console.log("ajax 2");
     $.ajax({
         url: url,
         dataType: 'json',
@@ -112,8 +112,8 @@ function trata_json_en(el, slug){
                 atuacoes = data_equipe[i]["practice-areas"];
             }
 
-            if (data_equipe[i].escritorios) {
-                escritorios = data_equipe[i].escritorios;
+            if (data_equipe[i].offices) {
+                escritorios = data_equipe[i].offices;
             }
 
             if (data_equipe[i].position) {
@@ -127,6 +127,8 @@ function trata_json_en(el, slug){
             break;
         }
     }
+
+    console.log(escritorios);
 }
 
 function popula_options(id_select){
@@ -169,7 +171,7 @@ var $isotope_el = $(".flex-bios").isotope({
   getSortData: {
     posicao_profissional: function( itemElem ) {
       var posicao = $( itemElem ).find('.data-posicao-int:not(.w-condition-invisible)').text();
-      console.log(posicao);
+      // console.log(posicao);
       return parseFloat( posicao );
     },
     nome_profissional: '.titulo-bio-card'
