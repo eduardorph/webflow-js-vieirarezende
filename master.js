@@ -50,3 +50,67 @@ function getParameterFromUrlByName( name ){
   else
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+function traducoes(){
+	$('.post-data-txt.date-lang-pt').each(function(){
+	  var mapObj = {
+	     Jan:"Jan",
+	     Feb:"Fev",
+	     Mar:"Mar",
+	     Apr:"Abr",
+	     May:"Mai",
+	     Jun:"Jun",
+	     Jul:"Jul",
+	     Aug:"Ago",
+	     Sep:"Set",
+	     Oct:"Out",
+	     Nov:"Nov",
+	     Dec:"Dez"
+
+	  };
+	  newText = $(this).text().replace(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/i, function(matched){
+	    return mapObj[matched];
+	  });
+
+	  $(this).text(newText);
+	});
+
+	$('.data-mob.date-lang-pt').each(function(){
+	  var mapObj = {
+	     January:"Janeiro",
+	     February:"Fevereiro",
+	     March:"Março",
+	     April:"Abril",
+	     May:"Maio",
+	     June:"Junho",
+	     July:"Julho",
+	     August:"Agosto",
+	     September:"Setembro",
+	     October:"Outubro",
+	     November:"Novembro",
+	     December:"Dezembro"
+
+	  };
+	  newText = $(this).text().replace(/January|February|March|April|May|June|July|August|September|October|November|December/i, function(matched){
+	    return mapObj[matched];
+	  });
+
+	  $(this).text(newText);
+	});
+}
+
+function generos(){
+
+	$('.posicao-single-show.Feminino').each(function(){
+	  var mapObj = {
+	     "Sócio":"Sócia",
+	     "Associado":"Associada",
+	     "Consultor":"Consultora"
+	  };
+	  newText = $(this).text().replace(/Sócio|Associado|Consultora/i, function(matched){
+	    return mapObj[matched];
+	  });
+
+	  $(this).text(newText);
+	});
+}
