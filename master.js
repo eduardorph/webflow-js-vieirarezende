@@ -99,9 +99,9 @@ function traducoes(){
 	});
 }
 
-function generos(){
+function generos(classe){
 
-	$('.posicao-single-show.Feminino').each(function(){
+	$(classe).each(function(){
 	  var mapObj = {
 	     "Sócio":"Sócia",
 	     "Associado":"Associada",
